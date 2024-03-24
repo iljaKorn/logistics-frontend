@@ -1,0 +1,74 @@
+body {
+    padding-top: 90px;
+    margin:0;
+}
+h1 {
+    margin: 0;
+
+}
+header {
+    height: 90px;
+    width: 100%;
+    background-color: #F2BF38;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    left: 0;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+}
+
+.menu_el {
+    padding-right: 20px;
+    /*border: solid;*/
+}
+
+/*.headLink {*/
+/*    color: white;*/
+/*    text-decoration: none;*/
+/*    border: solid 1px white;*/
+/*    background: none;*/
+/*    font-size:2em;*/
+/*}*/
+/*.headLink:hover {*/
+/*    color: aqua;*/
+/*    background: white;*/
+/*}*/
+
+.headLink, .headLink:visited, .headLink:hover, .headLink:active {
+    backface-visibility:hidden;
+    position:relative;
+    /*transition:0.5s color ease;*/
+    text-decoration:none;
+    color: black;
+    font-size:2em;
+}
+.headLink:hover {
+    color: red;
+}
+
+.icon {
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+}
+
+.logo {
+    float: left;
+    display: flex;
+    font-family: 'Exo', sans-serif;
+    justify-content: center;
+}
+.logo_name {
+    padding-top: 20px;
+}
+
+.profile {
+    float: right;
+}

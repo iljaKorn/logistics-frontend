@@ -4,7 +4,9 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
 import store, { persistor } from "./store";
-//import "./css/spin.css"
+import "./css/header.css"
+import "./css/footer.css"
+import "./css/homePage.css"
 import App from "./App";
 
 
