@@ -1,47 +1,27 @@
 import {createSlice} from "@reduxjs/toolkit"
 
 const userSlice = createSlice({
-    name: "user",
+    name: "userState",
     initialState: {
-        userId: -1,
+        token: "",
         user: {},
-        isLogged: false,
-        equipmentForRent: {},
-        booking: {},
-        dataForChange: {},
-        orderForChange: {}
+        isLogged: false
     }, 
     reducers: {
         authorizeUser(state, action) {
-            state.user = action.payload
-            state.userId = action.payload.id
+            state.user = action.payload.user
             state.isLogged = true
+            state.token = action.payload.token
         },
-        unauthorizeUser(state, action) {
+        unAuthorizeUser(state, action) {
             state.user = {}
-            state.userId = -1
             state.isLogged = false
             state.equipmentForRent = {}
             state.booking = {}
-        },
-        setEquipmentForRent(state, action) {
-            state.equipmentForRent = action.payload
-        },
-        setBooking(state, action) {
-            state.booking = action.payload
-        },
-        updateUser(state, action){
-            state.user = action.payload
-        },
-        setDataForChange(state, action){
-            state.dataForChange = action.payload
-        },
-        setOrderForChange(state, action){
-            state.orderForChange = action.payload
         }
     },
 });
 
-export const {authorizeUser, unauthorizeUser, setEquipmentForRent,  setBooking, updateUser, setDataForChange, setOrderForChange} = userSlice.actions;
+export const {authorizeUser, unAuthorizeUser} = userSlice.actions;
 
 export default userSlice.reducer;
