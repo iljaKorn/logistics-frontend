@@ -1,11 +1,12 @@
 body {
     padding-top: 90px;
-    margin:0;
+    margin: 0;
 }
+
 h1 {
     margin: 0;
-
 }
+
 header {
     height: 90px;
     width: 100%;
@@ -29,31 +30,20 @@ header {
     /*border: solid;*/
 }
 
-/*.headLink {*/
-/*    color: white;*/
-/*    text-decoration: none;*/
-/*    border: solid 1px white;*/
-/*    background: none;*/
-/*    font-size:2em;*/
-/*}*/
-/*.headLink:hover {*/
-/*    color: aqua;*/
-/*    background: white;*/
-/*}*/
-
 .headLink, .headLink:visited, .headLink:hover, .headLink:active {
-    backface-visibility:hidden;
-    position:relative;
+    backface-visibility: hidden;
+    position: relative;
     /*transition:0.5s color ease;*/
-    text-decoration:none;
+    text-decoration: none;
     color: black;
-    font-size:2em;
+    font-size: 2em;
 }
+
 .headLink:hover {
     color: red;
 }
 
-.icon {
+.logo-icon {
     height: 50px;
     width: 50px;
     padding: 10px;
@@ -65,10 +55,47 @@ header {
     font-family: 'Exo', sans-serif;
     justify-content: center;
 }
+
 .logo_name {
     padding-top: 20px;
 }
 
-.profile {
-    float: right;
+.profile-button {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile-button:hover {
+    background-color: red;
+}
+.profile-icon {
+    height: 50px;
+    width: 50px;
+    padding: 0;
+}
+
+.profile-main {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 10px;
+    width: 220px;
+    padding: 25px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 7px;
+
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.profile-main.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
 }
