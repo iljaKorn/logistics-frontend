@@ -1,0 +1,14 @@
+.switch {
+    display: flex;
+}
+.case {
+    background-color: green;
+}
+.active {
+    color: red;
+    pointer-events: visible;
+}
+.passive {
+    color: blue;
+    pointer-events: none;
+}

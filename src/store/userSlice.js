@@ -18,10 +18,13 @@ const userSlice = createSlice({
             state.isLogged = false
             state.equipmentForRent = {}
             state.booking = {}
+        },
+        setToken(state, action) {
+            state.token = action.payload
         }
     },
 });
 
-export const {authorizeUser, unAuthorizeUser} = userSlice.actions;
+export const {authorizeUser, unAuthorizeUser, setToken} = userSlice.actions;
 
 export default userSlice.reducer;
