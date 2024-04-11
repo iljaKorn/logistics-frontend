@@ -14,7 +14,9 @@ const Header = () => {
     }
 
     return (
-        <header className={"header"}>
+        <header className={"header"} onClick={(e) => {
+            if (e.target.className === "header") setOpen(false)
+        }}>
             <div className={"logo"}>
                 <img className={"logo-icon"} src={require('../../images/hermes.png')}
                      alt={"Error"}/>
@@ -43,9 +45,11 @@ const Header = () => {
                 <button className={"profile-button"} onClick={() => setOpen(!isOpen)}>
                     <img className={"profile-icon"}
                          src={require('../../images/profile.png')}
-                         alt={"Error"}/></button>
+                         alt={"Error"}/>
+                </button>
                 <nav className={`profile-main ${isOpen ? "active" : ""}`}>
                     {
+
                         state.user.isLogged ? <div>
                             <h1>{state.user.user.username}</h1>
                             <button onClick={unAuth}>Выйти</button>
