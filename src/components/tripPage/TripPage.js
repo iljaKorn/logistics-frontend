@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {format} from "date-fns";
 import EditableTable from "../table/EditableTable";
-import ColumnFilter from "../table/ColumnFilter";
 import axios from "axios";
+import AddTripModal from "./AddTripModal";
+import "../../css/tripPage.css"
+import "../../css/table.css"
 
 function TripPage(props) {
     const columns = [
@@ -39,14 +41,18 @@ function TripPage(props) {
             accessor: "createDate",
             editEnable: true,
             type: "date",
-            Cell: ({value}) => {return format(new Date(value), 'dd/MM/yyyy')},
+            Cell: ({value}) => {
+                return format(new Date(value), 'dd/MM/yyyy')
+            },
         },
         {
             Header: "Arrival Date",
             accessor: "arrivalDate",
             editEnable: true,
             type: "date",
-            Cell: ({value}) => {return format(new Date(value), 'dd/MM/yyyy')},
+            Cell: ({value}) => {
+                return format(new Date(value), 'dd/MM/yyyy')
+            },
 
         },
         {
@@ -54,7 +60,9 @@ function TripPage(props) {
             accessor: "dapartedDate",
             editEnable: true,
             type: "date",
-            Cell: ({value}) => {return format(new Date(value), 'dd/MM/yyyy')},
+            Cell: ({value}) => {
+                return format(new Date(value), 'dd/MM/yyyy')
+            },
 
         },
         {
@@ -85,19 +93,22 @@ function TripPage(props) {
                         <button onClick={() => handleButtonClick("edit", row.original)}>
                             Edit
                         </button>
+                        <button onClick={() => handleButtonClick("delete", row.original)}>
+                            Delete
+                        </button>
                     </div>
                 ),
         },
     ];
 
     const [data, setData] = useState([]);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     useEffect(() => {
         console.log("Data updated:", data);
     }, [data]);
     useEffect(() => {
         axios.get("http://localhost:8081/trips/all",).then(res => {
-            console.log(res.data);
             setData(res.data)
         }).catch(() => {
             alert("Произошла ошибка на сервере!")
@@ -112,8 +123,15 @@ function TripPage(props) {
         })
     }
 
+    const deleteRow = (id) => {
+        axios.delete(`http://localhost:8081/trips/delete/${id}`).then(res => {
+            console.log(res.data);
+        }).catch(() => {
+            alert("Произошла ошибка на сервере!")
+        })
+    }
     const handleButtonClick = (action, row) => {
-        const newData = data.map((rowData) => {
+        const newData = data.map((rowData, index) => {
             if (rowData.id === row.id) {
                 if (action === "edit") {
                     return {...rowData, isEditing: true, prevData: {...rowData}};
@@ -123,6 +141,9 @@ function TripPage(props) {
                     const {prevData, ...updatedRowData} = rowData;
                     sendChanges(updatedRowData)
                     return {...updatedRowData, isEditing: false};
+                } else if (action === "delete") {
+                    deleteRow(rowData.id)
+                    window.location.href = "/trips" // toDo
                 }
             }
             return rowData;
@@ -132,6 +153,11 @@ function TripPage(props) {
 
     return (
         <div className="App">
+            <div className={"add-field"}>
+                <button onClick={() => setModalIsOpen(true)}>Создать поездку</button>
+                <AddTripModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}></AddTripModal>
+                <div> Количество: {data.length}</div>
+            </div>
             <EditableTable
                 columns={columns}
                 data={data}
