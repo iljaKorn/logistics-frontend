@@ -39,6 +39,9 @@ const Header = () => {
                 <div className={"menu_el"}>
                     <Link className="headLink" to="/cargo">Грузы</Link>
                 </div>
+                <div className={"menu_el"}>
+                    <Link className="headLink" to="/map">Карта</Link>
+                </div>
             </nav>
 
             <div className={"profile"}>

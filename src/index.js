@@ -10,7 +10,6 @@ import "./css/homePage.css"
 import "./css/loginPage.css"
 import App from "./App";
 
-
 const app = ReactDOMClient.createRoot(document.getElementById("app"));
 
 app.render(<Provider store={store}>
