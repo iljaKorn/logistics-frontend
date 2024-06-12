@@ -5,7 +5,8 @@ const userSlice = createSlice({
     initialState: {
         token: "",
         user: {},
-        isLogged: false
+        isLogged: false,
+        routeForMap: []
     }, 
     reducers: {
         authorizeUser(state, action) {
@@ -21,10 +22,13 @@ const userSlice = createSlice({
         },
         setToken(state, action) {
             state.token = action.payload
+        },
+        setRoute(state, action) {
+            state.routeForMap = action.payload
         }
     },
 });
 
-export const {authorizeUser, unAuthorizeUser, setToken} = userSlice.actions;
+export const {authorizeUser, unAuthorizeUser, setToken, setRoute} = userSlice.actions;
 
 export default userSlice.reducer;

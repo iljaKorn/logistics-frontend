@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {format} from "date-fns";
 import EditableTable from "../table/EditableTable";
-import axios from "axios";
 import AddTripModal from "./AddTripModal";
+import axios from "axios";
+import { CiEdit } from "react-icons/ci";
+import { MdDelete } from "react-icons/md";
+import { MdCancelPresentation } from "react-icons/md";
+import { MdDataSaverOn } from "react-icons/md";
 import "../../css/tripPage.css"
 import "../../css/table.css"
 
@@ -13,31 +17,31 @@ function TripPage(props) {
             accessor: "id",
         },
         {
-            Header: "Departed",
+            Header: "Отправление",
             accessor: "departed",
             editEnable: true,
             type: "text",
         },
         {
-            Header: "Arrival",
+            Header: "Прибытие",
             accessor: "arrival",
             editEnable: true,
             type: "text",
         },
         {
-            Header: "Status",
+            Header: "Статус",
             accessor: "status",
             editEnable: true,
             isStatus: true,
             statuses: [
-                {value: "Processing", label: "Processing"},
-                {value: "OnTheWay", label: "OnTheWay"},
-                {value: "Delivered", label: "Delivered"},
-                {value: "Delayed", label: "Delayed"},
+                {value: "В процессе", label: "В процессе"},
+                {value: "В пути", label: "В пути"},
+                {value: "Доставлено", label: "Доставлено"},
+                {value: "Задерживается", label: "Задерживается"},
             ],
         },
         {
-            Header: "Create Date",
+            Header: "Дата создания",
             accessor: "createDate",
             editEnable: true,
             type: "date",
@@ -46,7 +50,7 @@ function TripPage(props) {
             },
         },
         {
-            Header: "Arrival Date",
+            Header: "Дата прибытия",
             accessor: "arrivalDate",
             editEnable: true,
             type: "date",
@@ -56,7 +60,7 @@ function TripPage(props) {
 
         },
         {
-            Header: "Departed Date",
+            Header: "Дата отправления",
             accessor: "dapartedDate",
             editEnable: true,
             type: "date",
@@ -66,13 +70,13 @@ function TripPage(props) {
 
         },
         {
-            Header: "Client",
+            Header: "Клиент",
             accessor: "client",
             editEnable: true,
             type: "text",
         },
         {
-            Header: "Actions",
+            Header: "Действия",
             id: "actions",
             disableSortBy: true,
             Cell: ({row, column, cell}) =>
@@ -80,21 +84,21 @@ function TripPage(props) {
                     <div className="edit-cell-container">
                         <div className={"edit-cell"}>
                             <button name={"done"} onClick={() => handleButtonClick("save", row.original)}>
-                                Save
+                                <MdDataSaverOn className={"table-icon"}></MdDataSaverOn>
                             </button>
                             <button name={"cancel"} onClick={() => handleButtonClick("cancel", row.original)}>
-                                Cancel
+                                <MdCancelPresentation className={"table-icon"}></MdCancelPresentation>
                             </button>
                         </div>
 
                     </div>
                 ) : (
                     <div className="edit-cell-container">
-                        <button onClick={() => handleButtonClick("edit", row.original)}>
-                            Edit
+                        <button name={"edit"} onClick={() => handleButtonClick("edit", row.original)}>
+                            <CiEdit className={"table-icon"}></CiEdit>
                         </button>
-                        <button onClick={() => handleButtonClick("delete", row.original)}>
-                            Delete
+                        <button name={"delete"} onClick={() => handleButtonClick("delete", row.original)}>
+                            <MdDelete className={"table-icon"}></MdDelete>
                         </button>
                     </div>
                 ),
@@ -104,9 +108,6 @@ function TripPage(props) {
     const [data, setData] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    useEffect(() => {
-        console.log("Data updated:", data);
-    }, [data]);
     useEffect(() => {
         axios.get("http://localhost:8081/trips/all",).then(res => {
             setData(res.data)

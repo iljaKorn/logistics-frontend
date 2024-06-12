@@ -29,9 +29,10 @@ table th {
 table .edit-cell-container button {
     border-radius: 50px;
     height: 26px;
-    width: 26px;
+    width: fit-content;
     border: 1px solid #ccc;
     color: #ffb918;
+    margin-right: 5px;
 }
 table .edit-cell {
     display: flex;
@@ -42,6 +43,9 @@ table button[name="cancel"] {
 }
 table button[name="done"] {
     color: #4bbd7f;
+}
+table button[name="delete"] {
+    color: red;
 }
 .form-control {
     width: 100px;
