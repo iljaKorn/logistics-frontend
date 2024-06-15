@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux"
 import {unAuthorizeUser} from "../../store/userSlice";
+import "../../css/header.css"
 
 const Header = () => {
 

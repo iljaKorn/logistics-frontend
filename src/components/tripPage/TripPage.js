@@ -155,9 +155,9 @@ function TripPage(props) {
     return (
         <div className="App">
             <div className={"add-field"}>
-                <button onClick={() => setModalIsOpen(true)}>Создать поездку</button>
+                <button className={'createTripButton'} onClick={() => setModalIsOpen(true)}>Создать поездку</button>
                 <AddTripModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}></AddTripModal>
-                <div> Количество: {data.length}</div>
+                <div className={'countTrips'}> Количество: {data.length}</div>
             </div>
             <EditableTable
                 columns={columns}
@@ -165,8 +165,6 @@ function TripPage(props) {
                 setData={setData}
                 handleButtonClick={handleButtonClick}
             />
-
-            <pre>{JSON.stringify(data, null, 2)}</pre>
         </div>
     );
 }

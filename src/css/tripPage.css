@@ -3,3 +3,22 @@
     justify-content: space-between;
     padding: 20px;
 }
+.createTripButton {
+    background-color: #F2BF38;
+    border-radius: 20px;
+    height: 30px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.countTrips {
+    background-color: #F2BF38;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    border-radius: 20px;
+}

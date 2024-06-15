@@ -1,14 +1,61 @@
+.active {
+    color: #8B8B8B;
+    pointer-events: visible;
+    background:none;
+    border:none;
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.passive {
+    color: #303030;
+    pointer-events: none;
+    background:none;
+    border:none;
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.forms {
+    width: 400px;
+
+    background: linear-gradient(217deg, #DFDFDF 0%, #FFFFFF 71.41%);
+    box-shadow: -20.5821px 27.3133px 68.4px rgba(51, 51, 51, 0.177), inset 5.58003px -7.40495px 9.272px #D7D7D7, inset -5.58003px 7.40495px 9.272px #FFFFFF;
+    border-radius: 48px;
+    padding: 30px;
+}
+
 .switch {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
-.case {
-    background-color: green;
+
+.loginForm {
+    margin-top: 40px;
+    height: 200px;
 }
-.active {
-    color: red;
-    pointer-events: visible;
+.regForm {
+    height: 300px;
 }
-.passive {
-    color: blue;
-    pointer-events: none;
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+}
+
+input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+.signin-button {
+    background-color: #F2BF38;
+
 }

@@ -17,8 +17,8 @@ const userSlice = createSlice({
         unAuthorizeUser(state, action) {
             state.user = {}
             state.isLogged = false
-            state.equipmentForRent = {}
-            state.booking = {}
+            state.routeForMap = []
+            state.token = ""
         },
         setToken(state, action) {
             state.token = action.payload

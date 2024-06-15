@@ -4,6 +4,7 @@ import axios from 'axios';
 import {useDispatch} from "react-redux"
 import {authorizeUser, setToken} from "../../store/userSlice"
 import {useNavigate} from "react-router-dom"
+import "../../css/loginPage.css"
 
 function LoginPage() {
 
@@ -83,62 +84,57 @@ function LoginPage() {
     }
 
     return (
-        <div>
-            <div className={"switch"}>
-                <button id={"btn_log"} className={"passive"} onClick={() => changeClass()}>Log in
-                </button>
-                <button id={"btn_reg"} className={"active"} onClick={() => changeClass()}>Sign up
-                </button>
+        <div className={"content"}>
+            <div className={"forms"}>
+                <div className={"switch"}>
+                    <button id={"btn_log"} className={"passive"} onClick={() => changeClass()}>Вход
+                    </button>
+                    <button id={"btn_reg"} className={"active"} onClick={() => changeClass()}>Регистрация
+                    </button>
+                </div>
+                {isLog ? <form className={"loginForm"} onSubmit={(e) => authRequest(e)}>
+
+                        <p>
+                            <input type="text" placeholder="Введите email" name="username"
+                                   value={log.username}
+                                   onChange={(e) => changeInputLog(e)} required maxLength="35" size="20"></input>
+                        </p>
+                        <p>
+                            <input type="password" placeholder="Введите пароль" name="password"
+                                   value={log.password}
+                                   onChange={(e) => changeInputLog(e)} required maxLength="35" size="20"></input>
+                        </p>
+                        <p>
+                            <input className="signin-button" type={"submit"} value={"Войти"}/>
+                        </p>
+                    </form> :
+                    <form className={"regForm"} onSubmit={(e) => registerRequest(e)}>
+
+                        <p>
+                            <input type="text" placeholder="Введите имя" name="username"
+                                   value={register.username}
+                                   onChange={(e) => changeInputRegister(e)} required maxLength="35" size="20"></input>
+                        </p>
+                        <p>
+                            <input type="text" placeholder="Введите email" name="email"
+                                   value={register.email}
+                                   onChange={(e) => changeInputRegister(e)} required maxLength="35" size="20"></input>
+                        </p>
+                        <p>
+                            <input type="password" placeholder="Введите пароль" name="password"
+                                   value={register.password}
+                                   onChange={(e) => changeInputRegister(e)} required maxLength="35" size="20"></input>
+                        </p>
+                        <p>
+                            <input type="password" placeholder="Повторите пароль" name="password"
+                                   value={register.password}
+                                   onChange={(e) => changeInputRegister(e)} required maxLength="35" size="20"></input>
+                        </p>
+                        <p>
+                            <input className="signin-button" type={"submit"} value={"Зарегистрироваться"}/>
+                        </p>
+                    </form>}
             </div>
-            {isLog ? <form onSubmit={(e) => authRequest(e)}>
-
-                    <p>
-                        <label>Your username</label>
-                        <input type="text" placeholder="Иванов Иван Иванович" name="username"
-                               value={log.username}
-                               onChange={(e) => changeInputLog(e)} required maxLength="35" size="20"></input>
-                    </p>
-                    <p>
-                        <label className="youpasswd">Your password </label>
-                        <input type="password" placeholder="********" name="password"
-                               value={log.password}
-                               onChange={(e) => changeInputLog(e)} required maxLength="35" size="20"></input>
-                    </p>
-                    <p className="signin button">
-                        <input type={"submit"} value={"Click"}/>
-                    </p>
-                </form> :
-                <form onSubmit={(e) => registerRequest(e)}>
-
-                    <p>
-                        <label>Your username</label>
-                        <input type="text" placeholder="Иванов Иван Иванович" name="username"
-                               value={register.username}
-                               onChange={(e) => changeInputRegister(e)} required maxLength="35" size="20"></input>
-                    </p>
-                    <p>
-                        <label className="youmail"> Your email</label>
-                        <input type="text" placeholder="example@example.ru" name="email"
-                               value={register.email}
-                               onChange={(e) => changeInputRegister(e)} required maxLength="35" size="20"></input>
-                    </p>
-                    <p>
-                        <label className="youpasswd">Your password </label>
-                        <input type="password" placeholder="********" name="password"
-                               value={register.password}
-                               onChange={(e) => changeInputRegister(e)} required maxLength="35" size="20"></input>
-                    </p>
-                    <p>
-                        <label className="youpasswd">Please confirm your
-                            password </label>
-                        <input type="password" placeholder="********" name="password"
-                               value={register.password}
-                               onChange={(e) => changeInputRegister(e)} required maxLength="35" size="20"></input>
-                    </p>
-                    <p className="signin button">
-                        <input type={"submit"} value={"Click"}/>
-                    </p>
-                </form>}
         </div>
     );
 }

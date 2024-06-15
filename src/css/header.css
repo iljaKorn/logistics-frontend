@@ -80,6 +80,7 @@ header {
 }
 
 .profile-main {
+    font-size: 15px;
     position: absolute;
     top: calc(100% + 5px);
     right: 10px;
